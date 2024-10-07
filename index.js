@@ -9,6 +9,8 @@ import cookieParser from 'cookie-parser';
 import logger from './middleware/logger.js';
 
 // import routes
+import userRoutes from './routes/user.js';
+import flightRoutes from './routes/flight.js';
 
 // load environment variables
 dotenv.config();
@@ -37,6 +39,8 @@ app.set('views', path.join(PATH, 'views'));
 app.use(logger);
 
 // use routes
+app.use('/api', userRoutes);
+app.use('/api', flightRoutes);
 
 // handle 404
 app.use('*', (req, res) => {
